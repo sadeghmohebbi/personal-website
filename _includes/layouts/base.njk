@@ -11,8 +11,8 @@
 		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
-
+		<meta name="generator" content="{{ eleventy.generator }}">
+		<link rel="stylesheet" href="css/fontiran.css">
 		{#-
 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
 		1. You can add to them using `{% css %}`
@@ -36,8 +36,8 @@
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
-		<header>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
+		<header class="force-rtl">
+			<a href="/" class="home-link">{{ metadata.title }}<br></a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
