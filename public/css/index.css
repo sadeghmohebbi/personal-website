@@ -148,12 +148,19 @@ header {
 	gap: 1em .5em;
 	flex-wrap: wrap;
 	align-items: center;
+	flex-direction: row;
 	padding: 1em;
 }
 .home-link {
 	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
+	font-weight: 900;
 	margin-right: 2em;
+	flex-grow: 8;
+}
+.home-link .slug {
+	font-weight: 100;
+	font-size: 0.7em;
+	margin-top: 0;
 }
 .home-link:link:not(:hover) {
 	text-decoration: none;

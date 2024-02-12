@@ -60,3 +60,49 @@ This set of fonts are used in this project under the license: (.....)
 		 url('../fonts/woff/IRAN.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 		 url('../fonts/ttf/IRAN.ttf') format('truetype');
 }
+
+.rtl {
+	direction: rtl;
+}
+.ltr {
+	direction: ltr;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-small {
+	font-size: 1em;
+}
+.text-xsmall {
+	font-size: 0.8em;
+}
+.text-large {
+	font-size: 1.5em;
+}
+.text-xlarge {
+	font-size: 2em;
+}
+.text-underline {
+	text-decoration:underline;
+}
+.text-ultralight {
+	font-weight: normal;
+}
+.text-light {
+	font-weight: normal;
+}
+.text-regular {
+	font-weight: normal;
+}
+.text-medium {
+	font-weight: 500;
+}
+.text-bold {
+	font-weight: bold;
+}
