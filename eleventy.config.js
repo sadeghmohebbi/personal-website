@@ -1,5 +1,6 @@
 const { DateTime } = require("luxon");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItAttrs = require('markdown-it-attrs');
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -89,6 +90,12 @@ module.exports = function(eleventyConfig) {
 			}),
 			level: [1,2,3,4],
 			slugify: eleventyConfig.getFilter("slugify")
+		});
+		mdLib.use(markdownItAttrs, {
+			// optional, these are default options
+			leftDelimiter: '{',
+			rightDelimiter: '}',
+			allowedAttributes: []  // empty array = all attributes are allowed
 		});
 	});
 

@@ -98,6 +98,15 @@ main :first-child {
 
 header {
 	border-bottom: 1px dashed var(--color-gray-20);
+	direction: rtl;
+}
+footer {
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em;
+	text-align: center;
+}
+footer > a {
+	color: var(--color-gray-50) !important;
 }
 header:after {
 	content: "";
@@ -152,14 +161,14 @@ header {
 	padding: 1em;
 }
 .home-link {
-	font-size: 1em; /* 16px /16 */
+	font-size: 1.2em; /* 16px /16 */
 	font-weight: 900;
-	margin-right: 2em;
+	margin-left: 2em;
 	flex-grow: 8;
 }
 .home-link .slug {
 	font-weight: 100;
-	font-size: 0.7em;
+	font-size: 0.8em;
 	margin-top: 0;
 }
 .home-link:link:not(:hover) {
@@ -176,6 +185,7 @@ header {
 .nav-item {
 	display: inline-block;
 	margin-right: 1em;
+	font-weight: 900;
 }
 .nav-item a[href]:not(:hover) {
 	text-decoration: none;

@@ -12,7 +12,7 @@
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		<meta name="generator" content="{{ eleventy.generator }}">
-		<link rel="stylesheet" href="css/fontiran.css">
+		<link rel="stylesheet" href="/css/fontiran.css">
 		{#-
 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
 		1. You can add to them using `{% css %}`
@@ -29,14 +29,14 @@
 		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
 		{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-		<style>{% getBundle "css" %}</style>
+		{# <style>{% getBundle "css" %}</style> #}
 		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
-		<header class="rtl">
+		<header>
 			<a href="/" class="home-link">{{ metadata.title }}<p class="slug">{{ metadata.description }}</p></a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
@@ -54,7 +54,12 @@
 			{{ content | safe }}
 		</main>
 
-		<footer></footer>
+		<footer>
+			<a href="https://github.com/sadeghmohebbi/" target="_blank" rel="noopener noreferrer">github |</a>
+			<a href="https://www.linkedin.com/in/sadegh-mohebbi-172476179/" target="_blank" rel="noopener noreferrer">linkedin |</a>
+			<a href="https://t.me/SadeghMohebbi" target="_blank" rel="noopener noreferrer">telegram |</a>
+			<a href="mailto:mohebbi.sadegh@gmail.com" target="_blank" rel="noopener noreferrer">email</a>
+		</footer>
 
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
 	</body>
