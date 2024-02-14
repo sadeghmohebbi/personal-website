@@ -107,6 +107,7 @@ module.exports = function(eleventyConfig) {
 	//Minify HTML Output to load faster
 	eleventyConfig.addTransform("minhtml", (content, outputPath) => {
     if (outputPath && outputPath.endsWith(".html")) {
+			console.log( `[11ty/htmlmin] ${outputPath} minified.` )
       return htmlMinifier.minify(content, {
         collapseWhitespace: true,
         removeComments: true,  
@@ -123,6 +124,7 @@ module.exports = function(eleventyConfig) {
 			if (Array.isArray(cssFiles) && cssFiles.length > 0) {
 				const fsOpt = { encoding: 'utf-8' }
 				cssFiles.map((cssFile) => path.join(cwd, cssFile)).forEach((cssFilePath) => {
+					console.log( `[11ty/cssmin] ${cssFilePath} minified.` )
 					const originalCSS = fs.readFileSync(cssFilePath, fsOpt)
 					const minifiedCSS = new CleanCSS().minify(originalCSS).styles
 					fs.writeFileSync(cssFilePath, minifiedCSS, fsOpt)
