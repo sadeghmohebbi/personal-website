@@ -32,6 +32,9 @@
 		"@11ty/eleventy-plugin-bundle": "^1.0.4",
 		"@11ty/eleventy-plugin-rss": "^1.2.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+		"clean-css": "^5.3.3",
+		"glob": "^10.3.10",
+		"html-minifier-terser": "^7.2.0",
 		"luxon": "^3.3.0",
 		"markdown-it-anchor": "^8.6.7",
 		"markdown-it-attrs": "^4.1.6"

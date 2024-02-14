@@ -1,15 +1,20 @@
-const { DateTime } = require("luxon");
-const markdownItAnchor = require("markdown-it-anchor");
-const markdownItAttrs = require('markdown-it-attrs');
+const { DateTime } = require("luxon")
+const markdownItAnchor = require("markdown-it-anchor")
+const markdownItAttrs = require("markdown-it-attrs")
+const htmlMinifier = require("html-minifier-terser")
+const CleanCSS = require('clean-css')
+const { glob } = require('glob')
+const fs = require('fs')
+const path = require('path')
 
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginBundle = require("@11ty/eleventy-plugin-bundle");
-const pluginNavigation = require("@11ty/eleventy-navigation");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const pluginRss = require("@11ty/eleventy-plugin-rss")
+const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
+const pluginBundle = require("@11ty/eleventy-plugin-bundle")
+const pluginNavigation = require("@11ty/eleventy-navigation")
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy")
 
-const pluginDrafts = require("./eleventy.config.drafts.js");
-const pluginImages = require("./eleventy.config.images.js");
+const pluginDrafts = require("./eleventy.config.drafts.js")
+const pluginImages = require("./eleventy.config.images.js")
 
 module.exports = function(eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder
@@ -17,67 +22,67 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		"./public/": "/",
 		"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
-	});
+	})
 
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
 	// Watch content images for the image pipeline.
-	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}")
 
 	// App plugins
-	eleventyConfig.addPlugin(pluginDrafts);
-	eleventyConfig.addPlugin(pluginImages);
+	eleventyConfig.addPlugin(pluginDrafts)
+	eleventyConfig.addPlugin(pluginImages)
 
 	// Official plugins
-	eleventyConfig.addPlugin(pluginRss);
+	eleventyConfig.addPlugin(pluginRss)
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
 		preAttributes: { tabindex: 0 }
-	});
-	eleventyConfig.addPlugin(pluginNavigation);
-	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-	eleventyConfig.addPlugin(pluginBundle);
+	})
+	eleventyConfig.addPlugin(pluginNavigation)
+	eleventyConfig.addPlugin(EleventyHtmlBasePlugin)
+	eleventyConfig.addPlugin(pluginBundle)
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
 		// Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
-	});
+		return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy")
+	})
 
 	eleventyConfig.addFilter('htmlDateString', (dateObj) => {
 		// dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
-	});
+		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd')
+	})
 
 	// Get the first `n` elements of a collection.
 	eleventyConfig.addFilter("head", (array, n) => {
 		if(!Array.isArray(array) || array.length === 0) {
-			return [];
+			return []
 		}
 		if( n < 0 ) {
-			return array.slice(n);
+			return array.slice(n)
 		}
 
-		return array.slice(0, n);
-	});
+		return array.slice(0, n)
+	})
 
 	// Return the smallest number argument
 	eleventyConfig.addFilter("min", (...numbers) => {
-		return Math.min.apply(null, numbers);
-	});
+		return Math.min.apply(null, numbers)
+	})
 
 	// Return all the tags used in a collection
 	eleventyConfig.addFilter("getAllTags", collection => {
-		let tagSet = new Set();
+		let tagSet = new Set()
 		for(let item of collection) {
-			(item.data.tags || []).forEach(tag => tagSet.add(tag));
+			(item.data.tags || []).forEach(tag => tagSet.add(tag))
 		}
-		return Array.from(tagSet);
-	});
+		return Array.from(tagSet)
+	})
 
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-		return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
-	});
+		return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1)
+	})
 
 	// Customize Markdown library settings:
 	eleventyConfig.amendLibrary("md", mdLib => {
@@ -90,14 +95,41 @@ module.exports = function(eleventyConfig) {
 			}),
 			level: [1,2,3,4],
 			slugify: eleventyConfig.getFilter("slugify")
-		});
+		})
 		mdLib.use(markdownItAttrs, {
 			// optional, these are default options
 			leftDelimiter: '{',
 			rightDelimiter: '}',
 			allowedAttributes: []  // empty array = all attributes are allowed
-		});
-	});
+		})
+	})
+
+	//Minify HTML Output to load faster
+	eleventyConfig.addTransform("minhtml", (content, outputPath) => {
+    if (outputPath && outputPath.endsWith(".html")) {
+      return htmlMinifier.minify(content, {
+        collapseWhitespace: true,
+        removeComments: true,  
+        useShortDoctype: true,
+      })
+    }
+    return content
+  })
+
+	eleventyConfig.on('afterBuild', () => {
+		//Minify CSS files in-place
+		const cwd = path.join(__dirname,'./_site/css')
+		glob('**/*.css', { cwd }).then((cssFiles) => {
+			if (Array.isArray(cssFiles) && cssFiles.length > 0) {
+				const fsOpt = { encoding: 'utf-8' }
+				cssFiles.map((cssFile) => path.join(cwd, cssFile)).forEach((cssFilePath) => {
+					const originalCSS = fs.readFileSync(cssFilePath, fsOpt)
+					const minifiedCSS = new CleanCSS().minify(originalCSS).styles
+					fs.writeFileSync(cssFilePath, minifiedCSS, fsOpt)
+				})
+			}
+		}).catch(err => console.error(err))
+	})
 
 	// Features to make your build faster (when you need them)
 
@@ -105,7 +137,7 @@ module.exports = function(eleventyConfig) {
 	// to emulate the file copy on the dev server. Learn more:
 	// https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
 
-	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough")
 
 	return {
 		// Control which files Eleventy will process
@@ -142,5 +174,5 @@ module.exports = function(eleventyConfig) {
 		// it will transform any absolute URLs in your HTML to include this
 		// folder name and does **not** affect where things go in the output folder.
 		pathPrefix: "/",
-	};
-};
+	}
+}
