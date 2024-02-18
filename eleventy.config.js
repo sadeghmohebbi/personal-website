@@ -1,6 +1,7 @@
 const { DateTime } = require("luxon")
 const markdownItAnchor = require("markdown-it-anchor")
 const markdownItAttrs = require("markdown-it-attrs")
+const markdownItForInlineIterator = require('markdown-it-for-inline')
 const htmlMinifier = require("html-minifier-terser")
 const CleanCSS = require('clean-css')
 const { glob } = require('glob')
@@ -101,6 +102,9 @@ module.exports = function(eleventyConfig) {
 			leftDelimiter: '{',
 			rightDelimiter: '}',
 			allowedAttributes: []  // empty array = all attributes are allowed
+		})
+		mdLib.use(markdownItForInlineIterator, 'url_new_win', 'link_open', function (tokens, idx) {
+			tokens[idx].attrSet('target', '_blank')
 		})
 	})
 
