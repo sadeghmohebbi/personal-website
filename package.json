@@ -3,14 +3,14 @@
 	"version": "1.0.0",
 	"description": "sadeghmohebbi personal website and blog inhierent from eleventy-base-blog",
 	"scripts": {
-		"build": "npx @11ty/eleventy",
-		"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
-		"start": "npx @11ty/eleventy --serve --quiet",
+		"build": "eleventy",
+		"build-ghpages": "eleventy --pathprefix=/eleventy-base-blog/",
+		"start": "eleventy --serve --quiet",
 		"serve": "http-server ./_site",
-		"dev": "npx @11ty/eleventy --serve --watch",
-		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
-		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+		"dev": "eleventy --serve --watch",
+		"debug": "DEBUG=Eleventy* eleventy",
+		"debugstart": "DEBUG=Eleventy* eleventy --serve --quiet",
+		"benchmark": "DEBUG=Eleventy:Benchmark* eleventy"
 	},
 	"repository": {
 		"type": "git",
