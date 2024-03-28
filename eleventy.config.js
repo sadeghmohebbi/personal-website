@@ -12,7 +12,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss")
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
 const pluginBundle = require("@11ty/eleventy-plugin-bundle")
 const pluginNavigation = require("@11ty/eleventy-navigation")
-const { EleventyHtmlBasePlugin, EleventyI18nPlugin } = require("@11ty/eleventy")
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy")
 
 const pluginDrafts = require("./eleventy.config.drafts.js")
 const pluginImages = require("./eleventy.config.images.js")
@@ -43,12 +43,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(pluginNavigation)
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin)
 	eleventyConfig.addPlugin(pluginBundle)
-
-	//Add Internationalization Support
-	eleventyConfig.addPlugin(EleventyI18nPlugin, {
-    defaultLanguage: 'en', // Required
-    errorMode: 'allow-fallback' // Opting out of "strict"
-  })
 
 	// Filters
 	eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
