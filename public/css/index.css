@@ -223,6 +223,14 @@ header {
 .postlist-date {
 	word-spacing: -0.5px;
 }
+.postlist-desc {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+	word-spacing: -0.5px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	width: 100%;
+}
 .postlist-link {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
