@@ -53,3 +53,15 @@ module.exports = {
 }
 ```
 تنظیمات برنامه‌ node js ای تان به راحتی هر چه تمام‌تر در تمامی محیط های انتشار اجرا خواهد شد و این پیاده‌سازی به خوبی جوابگوی این نیازمندی خواهد بود. {.rtl}
+
+___
+
+ یک راه جدیدتر که در node js 20 معرفی شده استفاده از command line زیر موقع اجرای برنامه است. در صورت استفاده از آن دیگر نیازی به پکیج dotenv و سه خط اول فایل config.js بالا نخواهد بود. {.rtl}
+
+‍
+```bash
+# node version 20 or higher
+node --env-file=.env app.js
+```
+
+سایت node js در [این مقاله](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs) مفصل در مورد این ویژگی جدید توضیح داده است. {.rtl}
