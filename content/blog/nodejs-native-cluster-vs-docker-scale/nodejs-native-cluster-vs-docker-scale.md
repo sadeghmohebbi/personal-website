@@ -181,6 +181,6 @@ K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_HOST=0.0.0.0 K6_WEB_DASHBOARD_EXPORT=repo
 
 [Node.js Cluster report](https://htmlpreview.github.io/?https://github.com/sadeghmohebbi/native-vs-docker-nodejs-scaling/blob/master/node-cluster-report.html)
 
-در آخر می‌توان گفت که با scale کرد برنامه‌ی node js ای با cluster library پرفورمنس بهتری به دست می‌آوریم ولی مزایای بسیار زیادی را از دست خواهیم داد از جمله ویژگی های nginx در سناریو های load balancing یا برتری های انتشار در محیط cloud مثل self healing و ... که در مجموع ما را به استفاده از قابلیت های scale ابری مجاب می‌کند. {.rtl}
+در آخر می‌توان گفت که scale کردن برنامه‌ی node js ای با cluster library پرفورمنس بهتری به دست می‌آوریم ولی مزایای بسیار زیادی را از دست خواهیم داد از جمله ویژگی های nginx در سناریو های load balancing یا برتری های انتشار در محیط cloud مثل self healing و ... که در مجموع ما را به استفاده از قابلیت های scale ابری مجاب می‌کند. {.rtl}
 
 ماجراجویی خوبی بود و البته که این نتیجه‌گیری منه و ممکنه اشتباه باشه، علاقه‌مند بودید مشتاقم که در این زمینه ها بحث و گفتگو کنیم. {.rtl}
