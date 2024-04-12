@@ -253,6 +253,13 @@ header {
 	text-transform: capitalize;
 	font-style: italic;
 }
+.post-image {
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
 .postlist-item > .post-tag {
 	align-self: center;
 }

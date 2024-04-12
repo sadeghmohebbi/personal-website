@@ -44,6 +44,8 @@ module.exports = function(eleventyConfig) {
 			sizes,
 			loading: "lazy",
 			decoding: "async",
+			"data-fslightbox": "gallery",
+			class: "post-image"
 		}
 
 		return eleventyImage.generateHTML(metadata, imageAttributes)
