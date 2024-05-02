@@ -176,6 +176,10 @@ header {
 }
 
 /* Nav */
+.nav-logo {
+	font-size: 55px;
+}
+
 .nav {
 	display: flex;
 	padding: 0;
