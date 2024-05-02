@@ -90,13 +90,10 @@ const service = new Service({
 ```bash
 npm run --silent generate | kubectl apply -f -
 ```
-
 در اینجا شرایط را بررسی می‌کنیم که سرویس مان با موفقیت روی کوبرنتیز لوکال مان اجرا شده است. سپس با کامند های زیر دسترسی به سرویس را از minikube به لوکال سیستم باز می‌کنیم تا به درخواست های ما پاسخ دهد. {.rtl}
 
 ```bash
-npm run --silent generate | kubectl apply -f -
-
-# --- in case when you minikube in another terminal
+# --- keep run in another terminal
 minikube tunnel
 # ---
 

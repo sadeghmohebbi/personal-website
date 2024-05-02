@@ -15,8 +15,11 @@ numberOfLatestPostsToShow: 3
 
 {% set morePosts = postsCount - numberOfLatestPostsToShow %}
 {% if morePosts > 0 %}
-<p class="rtl">{{ morePosts }} تا دیگه نوشته هست ◝(ᵔᵕᵔ)◜</p>
+<p class="rtl"><span id="more_posts"></span> نوشته‌ی دیگر هست ◝(ᵔᵕᵔ)◜</p>
 <p class="rtl"> سایر نوشته‌ها را در <a href="/blog/">آرشیو</a> ببین.</p>
+
+<script src="/scripts/num2persian-min.js"></script>
+<script>document.getElementById("more_posts").innerHTML = Num2persian({{ morePosts }})</script>
 {% endif %}
 
 {# List every content page in the project #}
