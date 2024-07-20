@@ -304,3 +304,10 @@ a[href].header-anchor:focus,
 h2 + .header-anchor {
 	font-size: 1.5em;
 }
+
+blockquote {
+	margin: 0;
+	padding: 16px 40px;
+	border-radius: 5px;
+	background-color: var(--color-gray-20);
+}
