@@ -17,7 +17,7 @@ numberOfLatestPostsToShow: 3
 {% if morePosts > 0 %}
 <p class="rtl"><span id="more_posts"></span> نوشته‌ی دیگر هست ◝(ᵔᵕᵔ)◜</p>
 <p class="rtl"> سایر نوشته‌ها را در <a href="/blog/">آرشیو</a> ببین.</p>
-<p class="rtl">یا یک فنجان قهوه مهمان‌ مان کن ☕ <a target="_blank" href="https://zarinp.al/622738">پرداخت آنلاین</a></p>
+{# <p class="rtl">یا یک فنجان قهوه مهمان‌ مان کن ☕ <a target="_blank" href="https://zarinp.al/622738">پرداخت آنلاین</a></p> #}
 
 <script src="/scripts/num2persian-min.js"></script>
 <script>document.getElementById("more_posts").innerHTML = Num2persian({{ morePosts }})</script>
