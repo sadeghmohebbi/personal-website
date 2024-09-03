@@ -6,11 +6,15 @@ eleventyNavigation:
 ---
 # درباره‌ی من {.rtl}
 
-{% image "./sadeghmohebbi.jpg", "this is me, at work" %}
+TL;DR (too long; didn't read) <br> download my resume from [here](/sadeghmohebbi-resume.pdf)
+
+{% image "./sadeghmohebbi.jpg", "this is me, at work" %} {.mini-image}
 
 سلام، متولد ۷۵ ام با دو تا بچه قد و نیم قد!ُ ساکن تهرانم. تست شخصیت ای ام INTP عه و یخورده درون‌گرام. {.rtl}
 
 در حال حاظر به کارای ادمین سیستمی و دواپس مشغولم و روزای کارمندیم پشت ریموت به سرورها و پنل های مانیتورینگ و اندکی به کد نویسی js می‌گذره. {.rtl}
+
+[دانلود فایل رزومه‌ی من به عنوان SRE](/sadeghmohebbi-resume.pdf) {.rtl}
 
 [جستاری در این خصوص که چگونه در طاقچه استخدام شدم](https://vrgl.ir/eR7h7) {.rtl}
 

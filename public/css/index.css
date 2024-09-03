@@ -264,6 +264,14 @@ header {
 	width: auto;
 	height: auto;
 }
+
+.mini-image {
+	object-fit: contain;
+	max-width: 50%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
 .postlist-item > .post-tag {
 	align-self: center;
 }
