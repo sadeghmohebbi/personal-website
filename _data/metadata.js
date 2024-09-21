@@ -7,5 +7,5 @@ module.exports = {
 		name: "Sadegh Mohebbi",
 		email: "mohebbi.sadegh@gmail.com",
 		url: "https://sadeghmohebbi.ir/about-me/"
-	}
+	},
 }
