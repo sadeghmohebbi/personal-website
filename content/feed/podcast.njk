@@ -2,7 +2,7 @@
 # Metadata comes from _data/metadata.js
 permalink: /feed/podcast.xml
 ---
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns" xmlns:podcast="https://podcastindex.org/namespace/1.0">
 	<channel>
 		<title>{{ metadata.podcast.title }}</title>
 		<description>{{ metadata.podcast.description }}</description>
@@ -26,7 +26,7 @@ permalink: /feed/podcast.xml
 			<itunes:name>{{ metadata.author.name }}</itunes:name>
 			<itunes:email>{{ metadata.author.email }}</itunes:email>
 		</itunes:owner>
-		<itunes:explicit>No</itunes:explicit>
+		<itunes:explicit>false</itunes:explicit>
 		<itunes:category text="Technology"/>
 		<itunes:image href="{{ metadata.podcast.artwork }}"/>
     {%- for episod in collections.episods | reverse %}
@@ -39,7 +39,7 @@ permalink: /feed/podcast.xml
 			<pubDate>{{ episod.data.date | readableDate('ccc, d LLL yyyy TTT') }}</pubDate>
 			<enclosure url="{{ episod.data.url }}" length="{{ episod.data.content_length }}" type="audio/mpeg"/>
 			<itunes:summary>{{ episod.data.description }}{{ episod.data.trademarks | htmlLiner(true) }}</itunes:summary>
-			<itunes:explicit>No</itunes:explicit>
+			<itunes:explicit>false</itunes:explicit>
 			<itunes:duration>{{ episod.data.duration }}</itunes:duration>
 			<itunes:image href="{{ metadata.podcast.image }}"/>
 			<itunes:episodeType>full</itunes:episodeType>
