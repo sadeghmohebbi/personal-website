@@ -1,0 +1,49 @@
+---
+# Metadata comes from _data/metadata.js
+permalink: /feed/podcast.xml
+---
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+	<channel>
+		<title>{{ metadata.podcast.title }}</title>
+		<description>{{ metadata.podcast.description }}</description>
+		<link>{{ metadata.podcast.url }}</link>
+		<image>
+			<url>{{ metadata.podcast.image }}</url>
+			<title>{{ metadata.podcast.title }}</title>
+			<link>{{ metadata.podcast.url }}</link>
+		</image>
+		<generator>PersonalRSS</generator>
+		<lastBuildDate>{{ collections.episods | getNewestCollectionItemDate | readableDate('ccc, d LLL yyyy TTT') }}</lastBuildDate>
+		<atom:link href="{{ metadata.podcast.rss_feed }}" rel="self" type="application/rss+xml"/>
+		<author>{{ metadata.author.name }}</author>
+		<copyright>{{ metadata.author.name }}</copyright>
+		<language>{{ metadata.language }}</language>
+		<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+		<itunes:author>{{ metadata.author.name }}</itunes:author>
+		<itunes:summary>{{ metadata.podcast.description }}</itunes:summary>
+		<itunes:type>episodic</itunes:type>
+		<itunes:owner>
+			<itunes:name>{{ metadata.author.name }}</itunes:name>
+			<itunes:email>{{ metadata.author.email }}</itunes:email>
+		</itunes:owner>
+		<itunes:explicit>No</itunes:explicit>
+		<itunes:category text="Technology"/>
+		<itunes:image href="{{ metadata.podcast.image }}"/>
+    {%- for episod in collections.episods | reverse %}
+		<item>
+			<title>{{ episod.data.title }}</title>
+			<description>{{ episod.data.description }}{{ episod.data.trademakrs | htmlLiner(true) }}</description>
+			<link>{{ metadata.url }}{{ episod.url }}</link>
+			<guid isPermaLink="false">{{ metadata.url }}{{ episod.url }}</guid>
+			<dc:creator>{{ metadata.author.name }}</dc:creator>
+			<pubDate>{{ episod.data.date | readableDate('ccc, d LLL yyyy TTT') }}</pubDate>
+			<enclosure url="{{ episod.data.url }}" length="{{ episod.data.content_length }}" type="audio/mpeg"/>
+			<itunes:summary>{{ episod.data.description }}{{ episod.data.trademarks | htmlLiner(true) }}</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>{{ episod.data.duration }}</itunes:duration>
+			<itunes:image href="{{ metadata.podcast.image }}"/>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+    {%- endfor %}
+	</channel>
+</rss>

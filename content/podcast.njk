@@ -1,0 +1,10 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: پادکست🎙
+  order: 4
+---
+<h1 class="rtl">پادکست نیمچه برنامه نویس</h1>
+
+{% set postslist = collections.episods %}
+{% include "postslist.njk" %}

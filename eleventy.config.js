@@ -55,6 +55,13 @@ module.exports = function(eleventyConfig) {
 		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd')
 	})
 
+	eleventyConfig.addFilter("htmlLiner", (array, preNewLine) => {
+		if (preNewLine && Array.isArray(array)) {
+			array.unshift('')
+		}
+		return (array || []).join('<p><br></p>')
+	})
+
 	// Get the first `n` elements of a collection.
 	eleventyConfig.addFilter("head", (array, n) => {
 		if(!Array.isArray(array) || array.length === 0) {
