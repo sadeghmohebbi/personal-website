@@ -8,7 +8,7 @@ permalink: /feed/podcast.xml
 		<description>{{ metadata.podcast.description }}</description>
 		<link>{{ metadata.podcast.url }}</link>
 		<image>
-			<url>{{ metadata.podcast.image }}</url>
+			<url>{{ metadata.podcast.artwork }}</url>
 			<title>{{ metadata.podcast.title }}</title>
 			<link>{{ metadata.podcast.url }}</link>
 		</image>
@@ -28,7 +28,7 @@ permalink: /feed/podcast.xml
 		</itunes:owner>
 		<itunes:explicit>No</itunes:explicit>
 		<itunes:category text="Technology"/>
-		<itunes:image href="{{ metadata.podcast.image }}"/>
+		<itunes:image href="{{ metadata.podcast.artwork }}"/>
     {%- for episod in collections.episods | reverse %}
 		<item>
 			<title>{{ episod.data.title }}</title>
