@@ -17,6 +17,17 @@ layout: layouts/base.njk
 
 {{ content | safe }}
 
+{%- if url %}
+<p class="rtl">پلیر آنلاین:</p>
+<audio controls>
+	<source src="{{ url }}" type="audio/mpeg">
+	Your browser does not support the audio element.
+</audio>
+<p class="rtl">
+	<a href="/podcast">بازگشت به لیست اپیزود‌ها و صفحه اصلی پادکست</a>
+</p>
+{%- endif %}
+
 {%- if collections.posts %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
 {%- set nextPost = collections.posts | getNextCollectionItem %}
