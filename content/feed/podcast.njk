@@ -13,7 +13,7 @@ permalink: /feed/podcast.xml
 			<link>{{ metadata.podcast.url }}</link>
 		</image>
 		<generator>PersonalRSS</generator>
-		<lastBuildDate>{{ collections.episods | getNewestCollectionItemDate | readableDate('ccc, d LLL yyyy TTT') }}</lastBuildDate>
+		<lastBuildDate>{{ collections.episods | getNewestCollectionItemDate | readableDate('ccc, d LLL yyyy TT') }} GMT</lastBuildDate>
 		<atom:link href="{{ metadata.podcast.rss_feed }}" rel="self" type="application/rss+xml"/>
 		<author>{{ metadata.author.name }}</author>
 		<copyright>{{ metadata.author.name }}</copyright>
@@ -36,7 +36,7 @@ permalink: /feed/podcast.xml
 			<link>{{ metadata.url }}{{ episod.url }}</link>
 			<guid isPermaLink="false">{{ metadata.url }}{{ episod.url }}</guid>
 			<dc:creator>{{ metadata.author.name }}</dc:creator>
-			<pubDate>{{ episod.data.date | readableDate('ccc, d LLL yyyy TTT') }}</pubDate>
+			<pubDate>{{ episod.data.date | readableDate('ccc, d LLL yyyy TT') }} GMT</pubDate>
 			<enclosure url="{{ episod.data.url }}" length="{{ episod.data.content_length }}" type="audio/mpeg"/>
 			<itunes:summary>{{ episod.data.description }}{{ episod.data.trademarks | htmlLiner(true) }}</itunes:summary>
 			<itunes:explicit>false</itunes:explicit>

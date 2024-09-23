@@ -5,6 +5,6 @@ trademarks:
   - Sound Effect by <a href="https://pixabay.com/users/singsongsign-41447571/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=193046">singsongsign</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=193046">Pixabay</a>
 url: https://podcast.sadeghmohebbi.ir/episods/nb-ep0_mixdown.mp3
 content_length: 1593674
-duration: 00:01:05
+duration: 62
 date: 2024-09-17
 ---
