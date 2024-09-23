@@ -41,7 +41,7 @@ permalink: /feed/podcast.xml
 			<itunes:summary>{{ episod.data.description }}{{ episod.data.trademarks | htmlLiner(true) }}</itunes:summary>
 			<itunes:explicit>false</itunes:explicit>
 			<itunes:duration>{{ episod.data.duration }}</itunes:duration>
-			<itunes:image href="{{ metadata.podcast.image }}"/>
+			<itunes:image href="{{ metadata.podcast.artwork }}"/>
 			<itunes:episodeType>full</itunes:episodeType>
 		</item>
     {%- endfor %}
