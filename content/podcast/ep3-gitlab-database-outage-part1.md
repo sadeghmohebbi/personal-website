@@ -1,6 +1,6 @@
 ---
 title: اپیزود سه - گیت لب و دیتابیسی که محو شد بخش اول
-description: اوایل سال ۲۰۱۷ کل گیت لب ۱۸ سات پایین بود و در این اپیزود کالبدشکافی شنیدنی این داون تایم را مرور و یکی از درس آموخته های آن را بررسی کردیم.
+description: اوایل سال ۲۰۱۷ کل گیت لب ۱۸ ساعت پایین بود و در این اپیزود کالبدشکافی شنیدنی این داون تایم را مرور و یکی از درس آموخته های آن را بررسی کردیم.
 trademarks:
   - <p><a href="https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/" target="_blank" rel="noopener noreferer nofollow">Postmortem of database outage of January 31 2017</a></p>
   - <p><a href="https://youtu.be/tLdRBsuvVKc?si=P3FRg2i0pk35mPwN" target="_blank" rel="noopener noreferer nofollow">Dev Deletes Entire Production Database, Chaos Ensues (youtube)</a></p>
