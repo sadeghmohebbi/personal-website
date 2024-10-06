@@ -1,0 +1,15 @@
+---
+title: اپیزود سه - گیت لب و دیتابیسی که محو شد بخش اول
+description: اوایل سال ۲۰۱۷ کل گیت لب ۱۸ سات پایین بود و در این اپیزود کالبدشکافی شنیدنی این داون تایم را مرور و یکی از درس آموخته های آن را بررسی کردیم.
+trademarks:
+  - <p><a href="https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/" target="_blank" rel="noopener noreferer nofollow">Postmortem of database outage of January 31 2017</a></p>
+  - <p><a href="https://youtu.be/tLdRBsuvVKc?si=P3FRg2i0pk35mPwN" target="_blank" rel="noopener noreferer nofollow">Dev Deletes Entire Production Database, Chaos Ensues (youtube)</a></p>
+  - <p><a href="https://youtu.be/v0TRHLvYGE0?si=93WHhp3__Q2tI1BV" target="_blank" rel="noopener noreferer nofollow">Gitlab Recovery Stream (youtube)</a></p>
+  - fun-beat-for-challenge-gaming-end-os-something-193046 Sound Effect by <a href="https://pixabay.com/users/singsongsign-41447571/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=193046">singsongsign</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=193046">Pixabay</a>
+  - drum-beat-bpm-120-113150 Sound Effect by <a href="https://pixabay.com/users/shidenbeatsmusic-25676252/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=113150">Shiden Beats Music</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=113150">Pixabay</a>
+  - crate-dig-drumloop-90bpm-129616 Sound Effect by <a href="https://pixabay.com/users/kamhunt-27612606/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129616">Kammerin Hunt</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129616">Pixabay</a>
+  - cinamatic-impact-210686 Sound Effect by <a href="https://pixabay.com/users/mleckert82-6606463/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=210686">Marie-Louise Janneman</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=210686">Pixabay</a>
+content_length: 12356958
+duration: 513
+date: 2024-10-06
+---
