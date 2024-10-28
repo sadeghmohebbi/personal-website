@@ -8,6 +8,6 @@ trademarks:
   - crate-dig-drumloop-90bpm-129616 Sound Effect by <a href="https://pixabay.com/users/kamhunt-27612606/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129616">Kammerin Hunt</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=129616">Pixabay</a>
 url: https://podcast.sadeghmohebbi.ir/episods/nb-ep6_mixdown.mp3
 content_length: 5663026
-duration: 472
+duration: 234
 date: 2024-10-28
 ---
