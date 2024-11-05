@@ -17,6 +17,7 @@ layout: layouts/base.njk
 
 {{ content | safe }}
 
+{# podcast episod region #}
 {%- if url %}
 <p class="rtl">پلیر آنلاین:</p>
 <audio controls>
@@ -27,6 +28,7 @@ layout: layouts/base.njk
 	<a href="/podcast">بازگشت به لیست اپیزود‌ها و صفحه اصلی پادکست</a>
 </p>
 {%- endif %}
+{# podcast episod region #}
 
 {%- if collections.posts %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem %}
