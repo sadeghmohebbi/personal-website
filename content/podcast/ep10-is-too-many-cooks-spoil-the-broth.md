@@ -8,7 +8,7 @@ trademarks:
   - کانال تلگرام پادکست
   - <a href="https://t.me/NimcheBarnamehNevis">نیمچه برنامه نویس</a>
 url: https://podcast.sadeghmohebbi.ir/episods/nb-ep10_mixdown.mp3
-content_length: 10165429
-duration: 422
+content_length: 10291951
+duration: 427
 date: 2024-12-20
 ---
