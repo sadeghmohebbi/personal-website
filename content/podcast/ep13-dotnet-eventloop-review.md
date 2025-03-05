@@ -1,6 +1,6 @@
 ---
 title: اپیزود سیزده - چلو‌کره ی در صف
-description: در این اپیزود به مرور سریع و کاربردی event loop به عنوان یک ابزار مهم در پیاده سازی برنامه نویسی ناهمزمان در دات نت پرداختیم
+description: در این اپیزود به مرور سریع و کاربردی thread pool به عنوان یک ابزار مهم در پیاده سازی برنامه نویسی ناهمزمان در دات نت پرداختیم
 trademarks:
   - <p><a href="https://learn.microsoft.com/en-us/shows/on-dotnet/diagnosing-thread-pool-exhaustion-issues-in-net-core-apps" target="_blank" rel="noopener noreferer nofollow">Diagnosing thread pool exhaustion issues in .NET Core apps</a></p>
   - <p><a href="https://youtu.be/Z86b3Rd09sE?si=68yR_P6FfoSBV5q2" target="_blank" rel="noopener noreferer nofollow">Inside Windows 8 Pedro Teixeira - Thread pools (youtube)</a></p>
