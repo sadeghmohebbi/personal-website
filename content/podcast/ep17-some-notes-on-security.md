@@ -1,5 +1,5 @@
 ---
-title: اپیزود هفته - چند کار ساده ی امن
+title: اپیزود هفده - چند کار ساده ی امن
 description: در این اپیزود به موارد مهمی در حوزه ی امنیت نرم افزار و شبکه طبق تجربه اشاره کردیم و در خصوص نقش و وظایف امنیت صحبت کردیم
 trademarks:
   - Closing Song is Pale White from Yann Tiersen, Shannon Wright · 2004.
