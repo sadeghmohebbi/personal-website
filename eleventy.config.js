@@ -115,30 +115,38 @@ module.exports = function(eleventyConfig) {
 		})
 	})
 
-	//Minify HTML Output to load faster
-	eleventyConfig.addTransform("minhtml", (content, outputPath) => {
-    if (outputPath && outputPath.endsWith(".html")) {
-			console.log( `[11ty/htmlmin] ${outputPath} minified.` )
-      return htmlMinifier.minify(content, {
-        collapseWhitespace: true,
-        removeComments: true,  
-        useShortDoctype: true,
-      })
-    }
-    return content
-  })
-
 	eleventyConfig.on('afterBuild', () => {
 		//Minify CSS files in-place
-		const cwd = path.join(__dirname,'./_site/css')
-		glob('**/*.css', { cwd }).then((cssFiles) => {
+		const cwdCSS = path.join(__dirname,'./_site/css')
+		glob('**/*.css', { cwd: cwdCSS }).then((cssFiles) => {
 			if (Array.isArray(cssFiles) && cssFiles.length > 0) {
 				const fsOpt = { encoding: 'utf-8' }
-				cssFiles.map((cssFile) => path.join(cwd, cssFile)).forEach((cssFilePath) => {
+				cssFiles.map((cssFile) => path.join(cwdCSS, cssFile)).forEach((cssFilePath) => {
 					console.log( `[11ty/cssmin] ${cssFilePath} minified.` )
 					const originalCSS = fs.readFileSync(cssFilePath, fsOpt)
 					const minifiedCSS = new CleanCSS().minify(originalCSS).styles
 					fs.writeFileSync(cssFilePath, minifiedCSS, fsOpt)
+				})
+			}
+		}).catch(err => console.error(err))
+
+		//Minify HTML files in-place
+		const cwd = path.join(__dirname,'./_site')
+		glob('**/*.html', { cwd }).then((htmlFiles) => {
+			if (Array.isArray(htmlFiles) && htmlFiles.length > 0) {
+				const fsOpt = { encoding: 'utf-8' }
+				htmlFiles.map((htmlFile) => path.join(cwd, htmlFile)).forEach((htmlFilePath) => {
+					console.log( `[11ty/htmlmin] ${htmlFilePath} minified.` )
+					const originalHTML = fs.readFileSync(htmlFilePath, fsOpt)
+					htmlMinifier.minify(originalHTML, {
+						collapseWhitespace: true,
+						removeComments: true,  
+						useShortDoctype: true,
+					}).then((minifiedHTML) => {
+						if (minifiedHTML) {
+							fs.writeFileSync(htmlFilePath, minifiedHTML, fsOpt)
+						}
+					}).catch(err => console.error(err))
 				})
 			}
 		}).catch(err => console.error(err))
