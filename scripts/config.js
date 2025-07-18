@@ -1,5 +1,7 @@
 require('dotenv').config() // load .env file to process.env
 
+const path = require('path')
+
 module.exports = {
   s3: {
     client: {
@@ -11,5 +13,6 @@ module.exports = {
       },
     },
     bucket: 'sadeghmohebbi-site'
-  }
+  },
+  buildOutDir: path.join(__dirname, '../_site')
 }

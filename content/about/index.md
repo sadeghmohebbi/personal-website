@@ -47,3 +47,6 @@ TL;DR (too long; didn't read) <br> download my resume from [here](/sadeghmohebbi
 
 [لیستی از مطالب محبوب اینجانب در ویرگول](https://virgool.io/@mohebbisadegh/list/zkbic3vndlkh) {.rtl}
 
+مدتی بعد پادکستی را شروع کردم که نقطه‌ی عطفی در فعالیت های شخصیم بعد از مدتها شد. بی حرف اضافه می‌توانید سری به صفحه‌ی پادکست بزنید.{.rtl}
+
+[پادکست نیمچه برنامه نویس](/podcast/) {.rtl}

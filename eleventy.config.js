@@ -111,7 +111,9 @@ module.exports = function(eleventyConfig) {
 			allowedAttributes: []  // empty array = all attributes are allowed
 		})
 		mdLib.use(markdownItForInlineIterator, 'url_new_win', 'link_open', function (tokens, idx) {
-			tokens[idx].attrSet('target', '_blank')
+			if (tokens[idx].attrGet('href')?.startsWith('https')) {
+				tokens[idx].attrSet('target', '_blank')
+			}
 		})
 	})
 
