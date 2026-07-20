@@ -132,3 +132,6 @@ dist
 
 # eleventy-base-blog
 _site/
+
+# AI
+.claude/
