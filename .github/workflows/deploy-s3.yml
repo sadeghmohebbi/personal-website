@@ -37,8 +37,8 @@ jobs:
 
       - name: Deploy to ArvanCloud S3
         run: |
-          aws s3 sync _site/ s3://${{ secrets.ARVAN_BUCKET_NAME }} \
-            --endpoint-url https://${{ secrets.ARVAN_S3_ENDPOINT }} \
+          aws s3 sync _site/ s3://sadeghmohebbi-site \
+            --endpoint-url https://s3.ir-tbz-sh1.arvanstorage.ir \
             --delete \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "*.html" \
@@ -49,8 +49,8 @@ jobs:
 
       - name: Deploy HTML/JSON/XML with no-cache
         run: |
-          aws s3 sync _site/ s3://${{ secrets.ARVAN_BUCKET_NAME }} \
-            --endpoint-url https://${{ secrets.ARVAN_S3_ENDPOINT }} \
+          aws s3 sync _site/ s3://sadeghmohebbi-site \
+            --endpoint-url https://s3.ir-tbz-sh1.arvanstorage.ir \
             --delete \
             --cache-control "public, max-age=0, must-revalidate" \
             --include "*.html" \
@@ -61,8 +61,8 @@ jobs:
 
       - name: Set public read ACL
         run: |
-          aws s3 cp s3://${{ secrets.ARVAN_BUCKET_NAME }} s3://${{ secrets.ARVAN_BUCKET_NAME }} \
-            --endpoint-url https://${{ secrets.ARVAN_S3_ENDPOINT }} \
+          aws s3 cp s3://sadeghmohebbi-site s3://sadeghmohebbi-site \
+            --endpoint-url https://s3.ir-tbz-sh1.arvanstorage.ir \
             --recursive \
             --acl public-read \
             --metadata-directive REPLACE
