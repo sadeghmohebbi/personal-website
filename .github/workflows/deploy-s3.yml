@@ -28,13 +28,18 @@ jobs:
         env:
           ELEVENTY_RUN_MODE: build
 
-      - name: Configure AWS credentials for ArvanCloud
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
-          endpoint-url: https://s3.ir-tbz-sh1.arvanstorage.ir
-          sts-endpoint-url: https://s3.ir-tbz-sh1.arvanstorage.ir
+          aws-region: ir-tbz-sh1
+          output-env-credentials: true
+
+      - name: Configure ArvanCloud endpoints
+        run: |
+          aws configure set s3.endpoint_url https://s3.ir-tbz-sh1.arvanstorage.ir
+          aws configure set sts.endpoint_url https://s3.ir-tbz-sh1.arvanstorage.ir
 
       - name: Deploy to ArvanCloud S3
         run: |
