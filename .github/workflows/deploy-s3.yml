@@ -37,9 +37,6 @@ jobs:
           aws configure set sts.endpoint_url https://s3.ir-tbz-sh1.arvanstorage.ir
 
       - name: Deploy static assets (long cache)
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
         run: |
           aws s3 sync --delete --no-follow-symlinks \
             --cache-control "public, max-age=31536000, immutable" \
@@ -49,9 +46,6 @@ jobs:
             _site/ s3://sadeghmohebbi-site/
 
       - name: Deploy HTML/JSON/XML (no cache)
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
         run: |
           aws s3 sync --delete --no-follow-symlinks \
             --cache-control "public, max-age=0, must-revalidate" \
@@ -61,9 +55,6 @@ jobs:
             _site/ s3://sadeghmohebbi-site/
 
       - name: Verify deployment
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
         run: |
           echo "=== Bucket contents ==="
           aws s3 ls s3://sadeghmohebbi-site/ --recursive --human-readable --summarize
