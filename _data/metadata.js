@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	title: "صادق محبی",
 	url: "https://sadeghmohebbi.ir",
 	language: "fa",
