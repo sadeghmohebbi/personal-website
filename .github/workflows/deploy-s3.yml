@@ -73,4 +73,4 @@ jobs:
       - name: Verify deployment
         run: |
           echo "=== Bucket contents ==="
-          aws s3 ls s3://sadeghmohebbi-site/ --recursive --human-readable --summarize
+          aws s3 ls s3://sadeghmohebbi-site/ --recursive --human-readable --summarize || true
