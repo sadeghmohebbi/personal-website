@@ -1,4 +1,4 @@
-name: Deploy to ArvanCloud S3 (s3cmd)
+name: Deploy to ArvanCloud S3
 
 on:
   push:
@@ -28,58 +28,49 @@ jobs:
         env:
           ELEVENTY_RUN_MODE: build
 
-      - name: Install s3cmd
+      - name: Configure AWS credentials for ArvanCloud
         run: |
-          sudo apt-get update && sudo apt-get install -y s3cmd
-
-      - name: Configure s3cmd for ArvanCloud
-        env:
-          ARVAN_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          ARVAN_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
-        run: |
-          cat > ~/.s3cfg << 'EOF'
-          [default]
-          access_key = ${ARVAN_ACCESS_KEY_ID}
-          secret_key = ${ARVAN_SECRET_ACCESS_KEY}
-          host_base = s3.ir-tbz-sh1.arvanstorage.ir
-          host_bucket = %(bucket)s.s3.ir-tbz-sh1.arvanstorage.ir
-          use_https = True
-          signature_v2 = False
-          multipart_chunk_size_mb = 15
-          send_chunk = 10000000
-          EOF
+          aws configure set aws_access_key_id ${{ secrets.ARVAN_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
+          aws configure set default.region ir-tbz-sh1
+          aws configure set s3.endpoint_url https://s3.ir-tbz-sh1.arvanstorage.ir
+          aws configure set sts.endpoint_url https://s3.ir-tbz-sh1.arvanstorage.ir
 
       - name: Deploy static assets (long cache)
-        env:
-          ARVAN_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          ARVAN_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
         run: |
-          s3cmd sync --delete-removed \
-            --add-header="Cache-Control:public, max-age=31536000, immutable" \
-            --exclude="*.html" --exclude="*.json" --exclude="*.xml" \
-            --exclude="*.txt" --exclude="*.webmanifest" \
-            --acl-public \
-            _site/ s3://sadeghmohebbi-site/
+          aws s3 sync _site/ s3://sadeghmohebbi-site/ \
+            --delete \
+            --endpoint-url https://s3.ir-tbz-sh1.arvanstorage.ir \
+            --cache-control "public, max-age=31536000, immutable" \
+            --exclude "*.html" \
+            --exclude "*.json" \
+            --exclude "*.xml" \
+            --exclude "*.txt" \
+            --exclude "*.webmanifest" \
+            --acl public-read
 
       - name: Deploy HTML/JSON/XML (no cache)
-        env:
-          ARVAN_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          ARVAN_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
         run: |
-          s3cmd sync --delete-removed \
-            --add-header="Cache-Control:public, max-age=0, must-revalidate" \
-            --include="*.html" --include="*.json" --include="*.xml" \
-            --include="*.txt" --include="*.webmanifest" \
-            --acl-public \
-            _site/ s3://sadeghmohebbi-site/
+          aws s3 sync _site/ s3://sadeghmohebbi-site/ \
+            --delete \
+            --endpoint-url https://s3.ir-tbz-sh1.arvanstorage.ir \
+            --cache-control "public, max-age=0, must-revalidate" \
+            --include "*.html" \
+            --include "*.json" \
+            --include "*.xml" \
+            --include "*.txt" \
+            --include "*.webmanifest" \
+            --acl public-read
+
+      - name: Set public read ACL
+        run: |
+          aws s3 cp s3://sadeghmohebbi-site/ s3://sadeghmohebbi-site/ \
+            --endpoint-url https://s3.ir-tbz-sh1.arvanstorage.ir \
+            --recursive \
+            --acl public-read \
+            --metadata-directive REPLACE
 
       - name: Verify deployment
-        env:
-          ARVAN_ACCESS_KEY_ID: ${{ secrets.ARVAN_ACCESS_KEY_ID }}
-          ARVAN_SECRET_ACCESS_KEY: ${{ secrets.ARVAN_SECRET_ACCESS_KEY }}
         run: |
           echo "=== Bucket contents ==="
-          s3cmd ls s3://sadeghmohebbi-site/
-          echo ""
-          echo "=== File count ==="
-          s3cmd ls s3://sadeghmohebbi-site/ | wc -l
+          aws s3 ls s3://sadeghmohebbi-site/ --recursive --human-readable --summarize
